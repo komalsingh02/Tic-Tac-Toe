@@ -23,6 +23,7 @@ const new_game=()=>{
     turn0=true;
     enable_button();
     msgcontainer.classList.add("hide");
+    count = 0;
 }
 
 
@@ -60,6 +61,24 @@ const showWinner=(winner)=>
             disable_button();
 }
 
+boxes.forEach((val)=>{
+    val.addEventListener("click",()=>{
+        if(turn0)
+        {
+            val.innerText="O";
+            val.style.color="green";
+            turn0=false;
+        }
+        else{
+            val.innerText="X";
+            val.style.color="darkred"
+            turn0=true;
+        }
+        val.disabled=true;
+        count++;
+        winner();
+    })
+})
 
 const winner=()=>{
     for( let pattern of winnigPattern)
@@ -78,27 +97,14 @@ const winner=()=>{
             }
             
         }
+        if(count===9)
+            { console.log("this is tie"); 
+                tie();
+
+
+            }
     }
 }
-
-
-boxes.forEach((val)=>{
-    val.addEventListener("click",()=>{
-        if(turn0)
-        {
-            val.innerText="O";
-            val.style.color="green";
-            turn0=false;
-        }
-        else{
-            val.innerText="X";
-            val.style.color="darkred"
-            turn0=true;
-        }
-        val.disabled=true;
-        winner();
-    })
-})
 
 newgame.addEventListener("click",new_game);
 
