@@ -11,7 +11,7 @@ const winnigPattern=[
     [3,4,5],
     [6,7,8],
     [0,3,6],
-    [1,4,7],``
+    [1,4,7],
     [2,5,8],
     [0,4,8],
     [2,4,6],
@@ -23,7 +23,6 @@ const new_game=()=>{
     turn0=true;
     enable_button();
     msgcontainer.classList.add("hide");
-    count = 0;
 }
 
 
@@ -79,12 +78,6 @@ const winner=()=>{
             }
             
         }
-        if(count===9)
-            { console.log("this is tie"); 
-                tie();
-
-
-            }
     }
 }
 
@@ -103,7 +96,6 @@ boxes.forEach((val)=>{
             turn0=true;
         }
         val.disabled=true;
-        count++;
         winner();
     })
 })
